@@ -26,4 +26,10 @@ public abstract class BasePage
 
         Actions.waitForVisibilityElement(element);
     }
+
+    public void setToPosition(WebElement element)
+    {
+        scrollInto(element);
+        Actions.waitForVisibilityElement(element);
+    }
 }

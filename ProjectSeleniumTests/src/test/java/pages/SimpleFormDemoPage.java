@@ -4,14 +4,14 @@ import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utility.Actions;
+import utility.DataFaker;
 
 public class SimpleFormDemoPage extends BasePage
 {
+    DataFaker faker = new DataFaker();
+
     @FindBy(css = "#easycont > div > div.col-md-6.text-left > div:nth-child(4)")
     private WebElement singleInputFieldPanel;
-
-    @FindBy(css = "#easycont > div > div.col-md-6.text-left > div:nth-child(5)")
-    private WebElement twoInputFieldsPanel;
 
     @FindBy(id = "user-message")
     private WebElement userMessage;
@@ -20,35 +20,89 @@ public class SimpleFormDemoPage extends BasePage
     private WebElement showMessageBtn;
 
     @FindBy(id = "display")
-    private WebElement displayedMessage;
+    private WebElement displayMessage;
+
+
+    @FindBy(css = "#easycont > div > div.col-md-6.text-left > div:nth-child(5)")
+    private WebElement twoInputFieldsPanel;
+
+    @FindBy(id = "sum1")
+    private WebElement aInput;
+
+    @FindBy(id = "sum2")
+    private WebElement bInput;
+
+    @FindBy(css = "#gettotal > button")
+    private WebElement getTotalBtn;
+
+    @FindBy(id = "displayvalue")
+    private WebElement displayValue;
+
 
     public SimpleFormDemoPage()
     {
         super();
     }
 
-    public void showPanel()
+    public SimpleFormDemoPage displayedMessageShouldBeIdenticalToInputMessage()
     {
-        scrollInto(singleInputFieldPanel);
-        Actions.waitForVisibilityElement(singleInputFieldPanel);
+        setToPosition(singleInputFieldPanel);
 
-        userMessage.sendKeys("Kot");
-        showMessageBtn.click();
-
+        submitSingleInputField();
         Assert.assertEquals("The message displayed should be identical to the user's message",
-                            userMessage.getAttribute("value"), displayedMessage.getText());
+                            userMessage.getAttribute("value"), displayMessage.getText());
 
-        try
-        {
-            Thread.sleep(5000);
-        } catch (InterruptedException e)
-        {
-            e.printStackTrace();
-        }
+        return this;
+    }
 
-        scrollInto(twoInputFieldsPanel);
-        Actions.waitForVisibilityElement(twoInputFieldsPanel);
+    public SimpleFormDemoPage displayedValueShoudBeSumOfInputs()
+    {
+        setToPosition(twoInputFieldsPanel);
+
+        submitSingleInputFieldPanel();
+
+        Assert.assertEquals(
+                aInput.getAttribute("value")+" + "+bInput.getAttribute("value")+" = "+getExpectedSum(),
+                getExpectedSum(),
+                displayValue.getText()
+                );
+
+        return this;
+    }
+
+    private void submitSingleInputField()
+    {
+        fillInMessageInput();
+        showMessage();
+    }
+
+    private void fillInMessageInput()
+    {
+        userMessage.sendKeys(faker.getChuckNorrisFact());
+    }
+
+    private void showMessage()
+    {
+        showMessageBtn.click();
+    }
 
 
+    private void submitSingleInputFieldPanel()
+    {
+        fillInInputs();
+        getTotalBtn.click();
+    }
+
+    private void fillInInputs()
+    {
+        aInput.sendKeys(faker.getNumber());
+        bInput.sendKeys(faker.getNumber());
+    }
+
+
+    private String getExpectedSum()
+    {
+        return String.valueOf(Integer.parseInt(aInput.getAttribute("value")) +
+                              Integer.parseInt(bInput.getAttribute("value")));
     }
 }
