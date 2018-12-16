@@ -41,7 +41,7 @@ public class CheckBoxDemoPage extends BasePage
 
     public CheckBoxDemoPage checkTheCheckboxShouldDisplayCorrectMessage()
     {
-        setToPosition(singleCheckBoxDemoPanel);
+        setViewToPosition(singleCheckBoxDemoPanel);
 
         checkTheCheckbox();
 
@@ -59,7 +59,7 @@ public class CheckBoxDemoPage extends BasePage
 
     public CheckBoxDemoPage checkAllOptionsShouldChangeButtonText(boolean checkWithButton)
     {
-        setToPosition(multipleCheckboxDemoPanel);
+        setViewToPosition(multipleCheckboxDemoPanel);
 
         if (checkWithButton) clickButton();
         else checkAllOptionsManually();
@@ -73,7 +73,7 @@ public class CheckBoxDemoPage extends BasePage
 
     public CheckBoxDemoPage uncheckAllOptionsShouldChangeButtonText(boolean uncheckWithButton)
     {
-        setToPosition(multipleCheckboxDemoPanel);
+        setViewToPosition(multipleCheckboxDemoPanel);
 
         if (uncheckWithButton)
         {

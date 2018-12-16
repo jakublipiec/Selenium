@@ -3,7 +3,6 @@ package pages;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utility.Actions;
 import utility.DataFaker;
 
 public class SimpleFormDemoPage extends BasePage
@@ -46,7 +45,7 @@ public class SimpleFormDemoPage extends BasePage
 
     public SimpleFormDemoPage displayedMessageShouldBeIdenticalToInputMessage()
     {
-        setToPosition(singleInputFieldPanel);
+        setViewToPosition(singleInputFieldPanel);
 
         submitSingleInputField();
         Assert.assertEquals("The message displayed should be identical to the user's message",
@@ -57,7 +56,7 @@ public class SimpleFormDemoPage extends BasePage
 
     public SimpleFormDemoPage displayedValueShoudBeSumOfInputs()
     {
-        setToPosition(twoInputFieldsPanel);
+        setViewToPosition(twoInputFieldsPanel);
 
         submitSingleInputFieldPanel();
 
