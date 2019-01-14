@@ -1,88 +1,93 @@
 package testCases;
 
 import config.TestConfig;
+import org.junit.Assert;
 import org.junit.Test;
-import pages.MainPage;
+import pages.mainPage.MainPage;
+import utility.PageData;
 
 public class RadioButtonDemoTest extends TestConfig
 {
     @Test
     public void choosingMaleInRadioButtonDemoPanelShouldShowCorrectMessage()
     {
-        new MainPage()
-                .goToRadioButtonDemoPage()
-                    .choosingMaleShouldShowCorrectMessage();
+        Assert.assertEquals(PageData.RADIO_BUTTON_DEMO_PAGE.radioButtonDemoPanelCorrectMessages.get("MALE_CHOSEN"),
+                            new MainPage()
+                                    .goToRadioButtonDemoPage()
+                                        .choosingMaleShouldShowCorrectMessage());
     }
 
     @Test
     public void choosingFemaleInRadioButtonDemoPanelShouldShowCorrectMessage()
     {
-        new MainPage()
-                .goToRadioButtonDemoPage()
-                    .choosingFemaleShouldShowCorrectMessage();
+        Assert.assertEquals(PageData.RADIO_BUTTON_DEMO_PAGE.radioButtonDemoPanelCorrectMessages.get("FEMALE_CHOSEN"),
+                new MainPage()
+                        .goToRadioButtonDemoPage()
+                            .choosingFemaleShouldShowCorrectMessage());
     }
 
     @Test
     public void choosingNothingShouldShowCorrectMessage()
     {
-        new MainPage()
-                .goToRadioButtonDemoPage()
-                    .choosingNothingShouldShowCorrectMessage();
+        Assert.assertEquals(PageData.RADIO_BUTTON_DEMO_PAGE.radioButtonDemoPanelCorrectMessages.get("NOTHING_CHOSEN"),
+                new MainPage()
+                        .goToRadioButtonDemoPage()
+                            .choosingNothingShouldShowCorrectMessage());
     }
 
     @Test
     public void clickGetValuesButtonBeforeChoosingRadioButtonShouldShowCorrectMessage()
     {
-        new MainPage()
-                .goToRadioButtonDemoPage()
-                    .clickGetValuesButtonBeforeChoosingRadioButtonShouldShowCorrectMessage();
+        Assert.assertEquals(PageData.RADIO_BUTTON_DEMO_PAGE.groupRadioButtonsDemoPanelCorrectMessages.get("NOTHING_CHOSEN")                           , new MainPage()
+                                      .goToRadioButtonDemoPage()
+                                          .clickGetValuesButtonBeforeChoosingRadioButtonShouldShowCorrectMessage());
     }
 
     @Test
     public void chooseMaleAndFirstAgeGroupShouldShowCorrectMessage()
     {
-        new MainPage()
-                .goToRadioButtonDemoPage()
-                    .chooseMaleAndFirstAgeGroupShouldShowCorrectMessage();
+        Assert.assertEquals(PageData.RADIO_BUTTON_DEMO_PAGE.groupRadioButtonsDemoPanelCorrectMessages.get("MALE_AND_FIRST_AGE_GROUP_CHOSEN"), new MainPage()
+                                              .goToRadioButtonDemoPage()
+                                                  .chooseMaleAndFirstAgeGroupShouldShowCorrectMessage());
     }
 
     @Test
     public void chooseMaleAndSecondAgeGroupShouldShowCorrectMessage()
     {
-        new MainPage()
-                .goToRadioButtonDemoPage()
-                    .chooseMaleAndSecondAgeGroupShouldShowCorrectMessage();
+        Assert.assertEquals(PageData.RADIO_BUTTON_DEMO_PAGE.groupRadioButtonsDemoPanelCorrectMessages.get("MALE_AND_SECOND_AGE_GROUP_CHOSEN"), new MainPage()
+                                               .goToRadioButtonDemoPage()
+                                                   .chooseMaleAndSecondAgeGroupShouldShowCorrectMessage());
     }
 
     @Test
     public void chooseMaleAndThirdAgeGroupShouldShowCorrectMessage()
     {
-        new MainPage()
-                .goToRadioButtonDemoPage()
-                    .chooseMaleAndThirdAgeGroupShouldShowCorrectMessage();
+        Assert.assertEquals(PageData.RADIO_BUTTON_DEMO_PAGE.groupRadioButtonsDemoPanelCorrectMessages.get("MALE_AND_THIRD_AGE_GROUP_CHOSEN"), new MainPage()
+                                              .goToRadioButtonDemoPage()
+                                                  .chooseMaleAndThirdAgeGroupShouldShowCorrectMessage());
     }
 
     @Test
     public void chooseFemaleAndFirstAgeGroupShouldShowCorrectMessage()
     {
-        new MainPage()
-                .goToRadioButtonDemoPage()
-                    .chooseFemaleAndFirstAgeGroupShouldShowCorrectMessage();
+        Assert.assertEquals(PageData.RADIO_BUTTON_DEMO_PAGE.groupRadioButtonsDemoPanelCorrectMessages.get("FEMALE_AND_FIRST_AGE_GROUP_CHOSEN"), new MainPage()
+                                                .goToRadioButtonDemoPage()
+                                                    .chooseFemaleAndFirstAgeGroupShouldShowCorrectMessage());
     }
 
     @Test
     public void chooseFemaleAndSecondAgeGroupShouldShowCorrectMessage()
     {
-        new MainPage()
-                .goToRadioButtonDemoPage()
-                    .chooseFemaleAndSecondAgeGroupShouldShowCorrectMessage();
+        Assert.assertEquals(PageData.RADIO_BUTTON_DEMO_PAGE.groupRadioButtonsDemoPanelCorrectMessages.get("FEMALE_AND_SECOND_AGE_GROUP_CHOSEN"), new MainPage()
+                                                 .goToRadioButtonDemoPage()
+                                                     .chooseFemaleAndSecondAgeGroupShouldShowCorrectMessage());
     }
 
     @Test
     public void chooseFemaleAndThirdAgeGroupShouldShowCorrectMessage()
     {
-        new MainPage()
-                .goToRadioButtonDemoPage()
-                    .chooseFemaleAndThirdAgeGroupShouldShowCorrectMessage();
+        Assert.assertEquals(PageData.RADIO_BUTTON_DEMO_PAGE.groupRadioButtonsDemoPanelCorrectMessages.get("FEMALE_AND_THIRD_AGE_GROUP_CHOSEN"), new MainPage()
+                                                .goToRadioButtonDemoPage()
+                                                    .chooseFemaleAndThirdAgeGroupShouldShowCorrectMessage());
     }
 }

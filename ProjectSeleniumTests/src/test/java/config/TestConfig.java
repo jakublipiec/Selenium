@@ -10,15 +10,15 @@ public abstract class TestConfig
 {
     private WebDriver driver;
 
+    private static final String BASE_URL = "https://www.seleniumeasy.com/test/";
+
     @Before
     public void setUp()
     {
-        String baseURL = "https://www.seleniumeasy.com/test/";
-
         driver = WebDriverSingleton.getInstance();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get(baseURL);
+        driver.get(BASE_URL);
     }
 
     @After
