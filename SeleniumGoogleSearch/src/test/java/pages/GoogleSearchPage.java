@@ -2,18 +2,14 @@ package pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import ru.yandex.qatools.allure.annotations.Step;
-import utility.DataFaker;
 
 public class GoogleSearchPage extends BasePage
 {
-    DataFaker faker = new DataFaker();
-
     @FindBy(name = "q")
-    WebElement searchInput;
+    private WebElement searchInput;
 
     @FindBy(name = "btnK")
-    WebElement searchButton;
+    private WebElement searchButton;
 
     public GoogleSearchPage()
     {
@@ -25,19 +21,17 @@ public class GoogleSearchPage extends BasePage
         searchInput.sendKeys(searchValue);
     }
 
-    @Step
-    public ResultPage submitSearchWithGoodQuery()
+    public ResultPage submitSearchWithGoodQuery(String query)
     {
-        fillSearchInput(faker.getFakeCity());
+        fillSearchInput(query);
         searchButton.submit();
 
         return new ResultPage();
     }
 
-    @Step
-    public ResultPage submitSearchWithWrongQuery()
+    public ResultPage submitSearchWithWrongQuery(String wrongQuery)
     {
-        fillSearchInput("---------------------------");
+        fillSearchInput(wrongQuery);
         searchButton.submit();
 
         return new ResultPage();

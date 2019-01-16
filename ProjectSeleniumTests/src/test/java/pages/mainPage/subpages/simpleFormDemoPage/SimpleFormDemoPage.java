@@ -55,9 +55,9 @@ public class SimpleFormDemoPage extends BasePage
         return this;
     }
 
-
     public String getExpectedSum()
     {
+
         return String.valueOf(Integer.parseInt(aInput.getAttribute("value")) +
                               Integer.parseInt(bInput.getAttribute("value")));
     }
